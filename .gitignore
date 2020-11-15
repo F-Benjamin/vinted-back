@@ -1,0 +1,4 @@
+node_modules
+photo
+.env
+package-lock.json
