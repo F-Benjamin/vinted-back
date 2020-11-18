@@ -45,12 +45,11 @@ router.post("/user/signup", async (req, res) => {
           salt: salt,
         });
 
-        // const pictureToUpload = req.files.avatar.path;
-        // const result = await cloudinary.uploader.upload(pictureToUpload, {
-        //   folder: "/vinted/user",
-        //   public_id: "avatar",
-        // });
-        // newUser.account.avatar = result;
+        await cloudinary.uploader.upload(req.files.avatar, {
+          folder: "/vinted/user",
+          public_id: "avatar",
+        });
+        newUser.account.avatar = result;
 
         await newUser.save();
         res.status(200).json({
